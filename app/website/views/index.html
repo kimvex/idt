@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/estilo.css">
+	<title></title>
+</head>
+<body>
+	<header class="titulo">
+		<div class="title1">
+			<input type="checkbox" id="instr">
+			<label for="instr" class="icon-file-text2 inst"></label>
+			<span class="instrucciones">
+				  Reglas del juego Establecidas</br>
+	•El primer jugador que se quede sin naipes es el ganador.
+
+	•Cada jugador en su turno tiene que tirar una o más cartas (todas del mismo número) sobre la pila de juego, que iguale o supere el valor de la que hay encima.</br>
+	•El palo de la carta no influye en el juego.</br>
+COMODINES:</br>
+	• 2, Esta carta nos permite lanzar de 1-4 cartas del mismo valor para ganar la partida, saltarse la jugada y no encartarse.</br>
+	• 10, Esta carta al ser lanzada todas las cartas que hay en la pila de juego se retiran de la partida.</br>
+	• As, Esta carta sirve para saltarse la jugada y no encartarse y obligar al siguiente jugador a lanzar sus comodines.</br>
+
+  				Repartimiento de cartas</br>
+
+	•El jugador que ha perdido la última baza es el encargado de repartir.</br>
+	•Se reparten nueve cartas para cada jugador de la siguiente forma:</br>
+	o Tres sobre la mesa boca abajo, de manera que ni tan solo el jugador sabe cuales son.</br>
+	o Tres sobre la mesa boca arriba, de manera que todos los jugadores las puedan ver.</br>
+	o Tres se entregan al jugador, de manera que solo él las pueda ver.</br>
+	•Las cartas sobrantes se dejarán en una pila para ir robando cuando sea necesario.</br>
+  				Antes de iniciar el juego</br>
+	•Los jugadores pueden, si quieren, intercambiar una o más de les cartas que tienen en su mano con sus cartas que tiene boca arriba.</br>
+
+			</article>
+		</div>
+		<div class="title">
+			<img src="img/Iconndnjenc.png">
+		</div>
+		<div class="conf">
+			<a href="#" class="icon-cogs config"></a>
+		</div>
+	</header>
+	<section class="section">
+		<div class="boton">
+			<form id="juego">
+				<input class="nombre" type="text" name="nombre" placeholder="Nombre" id="nombre" required>
+				<input value="Jugar" class="ingresa" type="submit" name="ingresa">
+			</form>
+			</div>
+			<input type="hidden" id="ip" value="{{ ip }}">
+	</section>
+	<script src="js/global.js"></script>
+	<script src="js/escript.js"></script>
+</body>
+</html>
