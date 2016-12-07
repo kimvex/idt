@@ -20,6 +20,12 @@ class ServidorHttp{
 
   }
 
+  listen(){
+
+  	this.servidor.listen(2000, ()=> console.log('Servidor Ejecutandose en el puerto 2000'));
+
+  }
+
 }
 
 module.exports = ServidorHttp;

@@ -20,8 +20,6 @@ class Ruteos {
 
     this.app.get('/', this.permiso.dentro, (sol, res, next)=>{
 
-      console.log(sol.session);
-
       let ip = ipServer.address();
 
       res.render('index', {ip: ip});
@@ -43,11 +41,12 @@ class Ruteos {
 
     this.app.post('/', (sol, res, next)=>{
 
+      console.log(sol.body.data.nombre);
       let hour = 3600000;
 
-      sol.session.name = sol.body.nombre;
+      sol.session.name = sol.body.data.nombre;
       sol.session.cookie.expires = new Date(Date.now() + hour);
-      console.log(res.send('=>'));
+      res.send({accs: '=>', name: sol.body.data.nombre});
     });
 
   }

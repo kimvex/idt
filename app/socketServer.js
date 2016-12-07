@@ -14,6 +14,7 @@ class Sockets {
 
     this.config = config || {};
     this.io = io.listen(this.config.server);
+    this.jugadores = [];
     console.log('Servidor socket.io se esta ejecutando');
 
   }
@@ -25,9 +26,21 @@ class Sockets {
     this.io.on('connection', (socket)=>{
 
       socket.on('creando', (data)=>{
+        
+        let s = this.jugadores.find( x => x == data);
 
-        console.log(data);
+        s == undefined ? this.jugadores.push(data) : '';
 
+        console.log(this.jugadores);
+        this.io.emit('nuevoUsuario', this.jugadores);
+
+      });
+
+      socket.on('cerrando', (data)=>{
+        let eliminado = this.jugadores.indexOf(data);
+        this.jugadores.splice(eliminado, 1);
+        console.log(this.jugadores);
+        this.io.emit('eliminarUsuario', data);
       });
 
     });

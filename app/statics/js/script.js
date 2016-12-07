@@ -5,24 +5,25 @@
 'use strict';
 
 import io from 'socket.io-client';
-import request from 'superagent';
+import axios from 'axios';
 
 let ip = document.querySelector('#ip').value;
-let socket = io(`ws://${ip}:2000`);
+let socket = io(`http://${ip}:2000`);
 
-document.querySelector('#juego').addEventListener('submit', (e)=>{
-
+document.querySelector('#ingresa').addEventListener('click', (e)=>{
   let nombre = document.querySelector('#nombre').value;
+  console.log(nombre);
 
-  request
-    .post('/')
-    .send({nombre: nombre})
-    .end((err, res)=>{
-      console.log(res.text)
-      if(res.text == '=>'){
-        window.location = '/juego';
-      }
-    }); 
+  axios.post('/', {
+    data: {nombre: nombre}
+  })
+  .then((data)=>{
+      console.log(data);
+    if(data.accs = '=>'){
+      localStorage.setItem('nombre',data.data.name);
+      document.location = '/juego';
+    }
+  });
 
   e.preventDefault();
 

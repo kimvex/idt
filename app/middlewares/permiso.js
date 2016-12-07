@@ -7,7 +7,7 @@
 module.exports = {
 
   permitido: (sol, res, next) =>{
-    console.log(sol);
+
     if(sol.session.name){
 
       next();
