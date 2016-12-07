@@ -68,7 +68,29 @@ io.on('eliminarUsuario', (data)=>{
 
 });
 
+document.querySelector('#comenzar').addEventListener('click', ()=>{
+	io.emit('jugar', 'comenzar');
+});
 
+io.on('cartas', (data)=>{
+	document.querySelector('#cartasG1').innerHTML = '';
+	document.querySelector('#cartasG2').innerHTML = '';
+	data.gamer1.cartas.map(x => {
+		let img = document.createElement('img');
+		img.src = data.gamer1.name == localStorage.getItem('nombre') ? `cartas/${x}.png` : `img/Iconndnjenc.png`;
+		img.width = 50;
+		img.height = 50;
+		document.querySelector('#cartasG1').appendChild(img);
+	});
+
+	data.gamer2.cartas.map(x => {
+		let img = document.createElement('img');
+		img.src = data.gamer2.name == localStorage.getItem('nombre') ? `cartas/${x}.png` : `img/Iconndnjenc.png`;
+		img.width = 50;
+		img.height = 50;
+		document.querySelector('#cartasG2').appendChild(img);
+	})
+});
 
 document.querySelector('#cerrar').addEventListener('click', ()=>{
 	io.emit('cerrando', localStorage.getItem('nombre'));

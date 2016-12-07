@@ -77,6 +77,30 @@ io.on('eliminarUsuario', function (data) {
 	document.querySelector('#segundoJugador').innerHTML = jugadores[1] == undefined ? '' : jugadores[1];
 });
 
+document.querySelector('#comenzar').addEventListener('click', function () {
+	io.emit('jugar', 'comenzar');
+});
+
+io.on('cartas', function (data) {
+	document.querySelector('#cartasG1').innerHTML = '';
+	document.querySelector('#cartasG2').innerHTML = '';
+	data.gamer1.cartas.map(function (x) {
+		var img = document.createElement('img');
+		img.src = data.gamer1.name == localStorage.getItem('nombre') ? 'cartas/' + x + '.png' : 'img/Iconndnjenc.png';
+		img.width = 50;
+		img.height = 50;
+		document.querySelector('#cartasG1').appendChild(img);
+	});
+
+	data.gamer2.cartas.map(function (x) {
+		var img = document.createElement('img');
+		img.src = data.gamer2.name == localStorage.getItem('nombre') ? 'cartas/' + x + '.png' : 'img/Iconndnjenc.png';
+		img.width = 50;
+		img.height = 50;
+		document.querySelector('#cartasG2').appendChild(img);
+	});
+});
+
 document.querySelector('#cerrar').addEventListener('click', function () {
 	io.emit('cerrando', localStorage.getItem('nombre'));
 	setTimeout(function () {
